@@ -1,9 +1,7 @@
-package entities.dto;
+package dto;
 
 import lombok.Builder;
 import lombok.Data;
-
-import javax.persistence.Column;
 
 @Data
 @Builder

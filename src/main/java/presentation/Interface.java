@@ -1,7 +1,7 @@
-package entities.presentation;
+package presentation;
 
-import entities.business.SectionService;
-import entities.business.SectionServiceImpl;
+import business.SectionService;
+import business.SectionServiceImpl;
 
 public class Interface {
 

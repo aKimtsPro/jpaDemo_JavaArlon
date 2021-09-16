@@ -1,6 +1,6 @@
-package entities.business;
+package business;
 
-import entities.dto.SectionDTO;
+import dto.SectionDTO;
 
 import java.util.List;
 

@@ -1,9 +1,8 @@
-package entities.business;
+package business;
 
-import entities.Section;
-import entities.business.mapper.SectionMapper;
-import entities.dao.SectionDAO;
-import entities.dto.SectionDTO;
+import business.mapper.SectionMapper;
+import data.dao.SectionDAO;
+import dto.SectionDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;

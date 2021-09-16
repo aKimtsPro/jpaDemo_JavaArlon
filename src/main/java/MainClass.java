@@ -1,5 +1,5 @@
-import entities.manager.EntityManagerProvider;
-import entities.presentation.Interface;
+import presentation.Interface;
+import util.EntityManagerProvider;
 
 public class MainClass {
 

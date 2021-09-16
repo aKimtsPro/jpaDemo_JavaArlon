@@ -1,7 +1,7 @@
-package entities.dao;
+package data.dao;
 
-import entities.Section;
-import entities.manager.EntityManagerProvider;
+import data.entities.Section;
+import util.EntityManagerProvider;
 
 import javax.persistence.EntityManager;
 import java.util.List;

@@ -1,7 +1,7 @@
-package entities.business.mapper;
+package business.mapper;
 
-import entities.Section;
-import entities.dto.SectionDTO;
+import data.entities.Section;
+import dto.SectionDTO;
 
 public class SectionMapper {
 
