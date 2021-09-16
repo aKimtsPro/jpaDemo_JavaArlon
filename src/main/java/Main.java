@@ -27,7 +27,7 @@ public class Main {
         System.out.println(s.getSection_id());
         System.out.println(s.getSection_name());
         System.out.println(s.getDelegate_id());
-        
+
         // Update
         s.setSection_name("BSc Management");
 
