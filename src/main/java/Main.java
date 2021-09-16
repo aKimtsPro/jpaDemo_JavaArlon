@@ -2,7 +2,6 @@ import entities.Section;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.FlushModeType;
 import javax.persistence.Persistence;
 import java.util.List;
 
@@ -18,18 +17,23 @@ public class Main {
 
         // - all
         List<Section> list = em.createQuery("SELECT s FROM Section s").getResultList();
-        list.forEach((s) -> System.out.println(s.getSection_id() +" - "+s.getSection_name()+" - " + s.getDelegate_id()));
+        list.forEach((s) -> System.out.println(s.getId() +" - "+s.getName()+" - " + s.getDelegateId()));
 
+        System.out.println("\n--- GET ONE ---");
         // - one
         // SELECT * FROM section WHERE section_id = 1010;
         Section s = em.find(Section.class, 1010);
 
-        System.out.println(s.getSection_id());
-        System.out.println(s.getSection_name());
-        System.out.println(s.getDelegate_id());
+        System.out.println("récupération faite");
 
+        System.out.println(s.getId());
+        System.out.println(s.getName());
+        System.out.println(s.getDelegateId());
+
+        System.out.println("\n--- UPDATE ---");
         // Update
-        s.setSection_name("BSc Management");
+        s.setName("BSc Management");
+        em.flush();
 
         // Delete
         Section toDelete = em.find(Section.class, 2222);
@@ -39,15 +43,16 @@ public class Main {
         // Create
         em.persist(
             Section.builder()
-                .section_id(2222)
-                .section_name("section persisté")
-                .delegate_id(10)
+                .id(2222)
+                .name("section persisté")
+                .delegateId(10)
                 .build()
         );
         em.getTransaction().commit();
 
         em.close();
         emf.close();
+
 
     }
 
