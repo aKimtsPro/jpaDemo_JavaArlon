@@ -3,7 +3,7 @@ CREATE DATABASE cmdDB
 use cmdDB
 
 CREATE TABLE client (
-    client_id INT PRIMARY KEY AUTO_INCREMENT,
+    client_id INT PRIMARY KEY IDENTITY,
     client_prenom VARCHAR(50) NOT NULL,
     client_nom VARCHAR(50) NOT NULL,
     client_adresse VARCHAR(255) NOT NULL,
