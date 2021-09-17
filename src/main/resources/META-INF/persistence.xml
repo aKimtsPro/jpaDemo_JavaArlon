@@ -4,7 +4,6 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 
     <persistence-unit name="demoJPA">
-
         <properties>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/dbslide"/>
@@ -12,7 +11,16 @@
             <property name="hibernate.connection.password" value=""/>
             <property name="hibernate.show_sql" value="true"/>
         </properties>
+    </persistence-unit>
 
+    <persistence-unit name="exoJPA">
+        <properties>
+            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/cmdDB"/>
+            <property name="hibernate.connection.username" value="root"/>
+            <property name="hibernate.connection.password" value=""/>
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
     </persistence-unit>
 
 </persistence>

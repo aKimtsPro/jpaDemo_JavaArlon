@@ -1,6 +1,6 @@
-package business;
+package demo.business;
 
-import dto.SectionDTO;
+import demo.dto.SectionDTO;
 
 import java.util.List;
 

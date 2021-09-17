@@ -1,4 +1,6 @@
-import presentation.Interface;
+package demo;
+
+import demo.presentation.Interface;
 import util.EntityManagerProvider;
 
 public class MainClass {

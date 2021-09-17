@@ -1,4 +1,4 @@
-package data.entities;
+package demo.data.entities;
 
 import lombok.*;
 

@@ -1,4 +1,6 @@
-import data.entities.Section;
+package demo;
+
+import demo.data.entities.Section;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

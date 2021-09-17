@@ -1,8 +1,8 @@
-package business;
+package demo.business;
 
-import business.mapper.SectionMapper;
-import data.dao.SectionDAO;
-import dto.SectionDTO;
+import demo.business.mapper.SectionMapper;
+import demo.data.dao.SectionDAO;
+import demo.dto.SectionDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,7 +1,7 @@
-package presentation;
+package demo.presentation;
 
-import business.SectionService;
-import business.SectionServiceImpl;
+import demo.business.SectionService;
+import demo.business.SectionServiceImpl;
 
 public class Interface {
 

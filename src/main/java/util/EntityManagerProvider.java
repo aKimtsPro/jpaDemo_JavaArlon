@@ -10,7 +10,7 @@ public class EntityManagerProvider {
     private EntityManagerProvider(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    public static final String PERSISTENCE_UNIT = "demoJPA";
+    public static final String PERSISTENCE_UNIT = "exoJPA";
     private static boolean isOpen = false;
     private EntityManagerFactory emf;
 

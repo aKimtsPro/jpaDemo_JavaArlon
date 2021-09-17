@@ -1,6 +1,6 @@
-package data.dao;
+package demo.data.dao;
 
-import data.entities.Section;
+import demo.data.entities.Section;
 import util.EntityManagerProvider;
 
 import javax.persistence.EntityManager;
@@ -14,10 +14,13 @@ public class SectionDAO {
     }
     private SectionDAO() {}
 
-    private EntityManager manager = EntityManagerProvider.getEntityManager();
+//    private EntityManager manager = EntityManagerProvider.getEntityManager();
 
     public List<Section> getAll(){
-        return manager.createQuery("SELECT s FROM Section s").getResultList();
+        EntityManager manager = EntityManagerProvider.getEntityManager();
+        List<Section> list = manager.createQuery("SELECT s FROM Section s", Section.class).getResultList();
+        manager.close();
+        return list;
     }
 
 }
