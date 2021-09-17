@@ -12,11 +12,9 @@ public class SectionDAO {
     public static SectionDAO getInstance() {
         return instance == null ? instance = new SectionDAO(): instance;
     }
-    private SectionDAO() {
-        manager = EntityManagerProvider.getEntityManager();
-    }
+    private SectionDAO() {}
 
-    private EntityManager manager;
+    private EntityManager manager = EntityManagerProvider.getEntityManager();
 
     public List<Section> getAll(){
         return manager.createQuery("SELECT s FROM Section s").getResultList();

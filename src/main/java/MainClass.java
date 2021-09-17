@@ -8,5 +8,6 @@ public class MainClass {
         EntityManagerProvider.open();
         new Interface().start();
         EntityManagerProvider.close();
+
     }
 }
