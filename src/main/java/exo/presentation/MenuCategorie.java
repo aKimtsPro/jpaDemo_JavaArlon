@@ -1,16 +1,20 @@
 package exo.presentation;
 
-import exo.business.service.spec.ProduitService;
+import exo.business.service.impl.CategorieServiceImpl;
 import exo.business.service.impl.ProduitServiceImpl;
+import exo.business.service.spec.CategorieService;
+import exo.business.service.spec.ProduitService;
+import exo.dto.CategorieDTO;
 import exo.dto.ProduitDTO;
 import exo.exception.ElementNotFoundException;
 
 import java.util.Scanner;
 
-public class MenuProduit implements Menu {
+public class MenuCategorie implements Menu{
+
 
     private final Scanner sc = new Scanner(System.in);
-    private final ProduitService service = new ProduitServiceImpl();
+    private final CategorieService service = new CategorieServiceImpl();
 
     public void start(){
 
@@ -24,7 +28,7 @@ public class MenuProduit implements Menu {
     }
 
     private void displayMenu() {
-        System.out.println("--- MENU PRODUIT ---");
+        System.out.println("--- MENU CATEGORIE ---");
         System.out.println("1 - afficher tout");
         System.out.println("2 - afficher un");
         System.out.println("3 - ajouter");
@@ -34,36 +38,23 @@ public class MenuProduit implements Menu {
     }
     private void mapChoix(int choix){
         switch (choix) {
-            case 1:
-                displayAll();
-                break;
-            case 2:
-                displayOne();
-                break;
-            case 3:
-                add();
-                break;
-            case 4:
-                delete();
-                break;
-            case 5:
-                update();
-                break;
-            case 6:
-                quit();
-                break;
-            default:
-                System.out.println("Choix invalide");
+            case 1 -> displayAll();
+            case 2 -> displayOne();
+            case 3 -> add();
+            case 4 -> delete();
+            case 5 -> update();
+            case 6 -> quit();
+            default -> System.out.println("Choix invalide");
         }
     }
 
     private void displayAll(){
-        System.out.println("----- TOUT LES PRODUITS -----");
+        System.out.println("----- TOUTES LES CATEGORIES -----");
         service.getAll().forEach(System.out::println);
     }
     private void displayOne(){
-        System.out.print("id du produit : ");
-        int id = Integer.parseInt( sc.nextLine() );
+        System.out.print("id du categorie : ");
+        String id =  sc.nextLine() ;
 
         try{
             System.out.println( service.getOne(id) );
@@ -73,20 +64,20 @@ public class MenuProduit implements Menu {
         }
     }
     private void add(){
-        ProduitDTO.ProduitDTOBuilder builder = ProduitDTO.builder();
+        CategorieDTO.CategorieDTOBuilder builder = CategorieDTO.builder();
 
-        System.out.print("marque du produit : ");
-        builder.marque( sc.nextLine() );
-        System.out.print("nom du produit : ");
+        System.out.print("id de categorie : ");
+        builder.id( sc.nextLine() );
+        System.out.print("nom de categorie : ");
         builder.nom( sc.nextLine() );
-        System.out.print("prix du produit : ");
-        builder.prix( Double.parseDouble(sc.nextLine()) );
+        System.out.print("description de categorie : ");
+        builder.description( sc.nextLine() );
 
         service.insert(builder.build());
     }
     private void delete(){
-        System.out.print("id du produit : ");
-        int id = Integer.parseInt( sc.nextLine() );
+        System.out.print("id du categorie : ");
+        String id =  sc.nextLine() ;
 
         try{
             System.out.println("Tentative de suppression");
@@ -98,16 +89,14 @@ public class MenuProduit implements Menu {
         }
     }
     private void update(){
-        ProduitDTO.ProduitDTOBuilder builder = ProduitDTO.builder();
+        CategorieDTO.CategorieDTOBuilder builder = CategorieDTO.builder();
 
-        System.out.print("id du produit : ");
-        builder.id( Integer.parseInt(sc.nextLine()) );
-        System.out.print("marque du produit : ");
-        builder.marque( sc.nextLine() );
-        System.out.print("nom du produit : ");
+        System.out.print("id de categorie : ");
+        builder.id( sc.nextLine() );
+        System.out.print("nom de categorie : ");
         builder.nom( sc.nextLine() );
-        System.out.print("prix du produit : ");
-        builder.prix( Double.parseDouble(sc.nextLine()) );
+        System.out.print("description de categorie : ");
+        builder.description( sc.nextLine() );
 
         try{
             System.out.println("Tentative d'update");

@@ -1,12 +1,8 @@
 package exo;
 
-import exo.data.dao.ProduitDAO;
-import exo.data.entity.Produit;
-import exo.exception.ProduitNotFoundException;
+import exo.presentation.MenuPrincipal;
 import exo.presentation.MenuProduit;
 import util.EntityManagerProvider;
-
-import java.util.Optional;
 
 public class MainExo {
 
@@ -14,7 +10,7 @@ public class MainExo {
 
         EntityManagerProvider.open();
 
-        new MenuProduit().start();
+        new MenuPrincipal().start();
 
         EntityManagerProvider.close();
 

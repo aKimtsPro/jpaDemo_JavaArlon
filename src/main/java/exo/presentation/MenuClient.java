@@ -1,16 +1,19 @@
 package exo.presentation;
 
-import exo.business.service.spec.ProduitService;
-import exo.business.service.impl.ProduitServiceImpl;
+import exo.business.service.impl.CategorieServiceImpl;
+import exo.business.service.impl.ClientServiceImpl;
+import exo.business.service.spec.CategorieService;
+import exo.business.service.spec.ClientService;
+import exo.dto.CategorieDTO;
+import exo.dto.ClientDTO;
 import exo.dto.ProduitDTO;
 import exo.exception.ElementNotFoundException;
 
 import java.util.Scanner;
 
-public class MenuProduit implements Menu {
-
+public class MenuClient implements Menu{
     private final Scanner sc = new Scanner(System.in);
-    private final ProduitService service = new ProduitServiceImpl();
+    private final ClientService service = new ClientServiceImpl();
 
     public void start(){
 
@@ -58,56 +61,60 @@ public class MenuProduit implements Menu {
     }
 
     private void displayAll(){
-        System.out.println("----- TOUT LES PRODUITS -----");
+        System.out.println("----- TOUS LES CLIENTS -----");
         service.getAll().forEach(System.out::println);
     }
     private void displayOne(){
-        System.out.print("id du produit : ");
+        System.out.print("id du client : ");
         int id = Integer.parseInt( sc.nextLine() );
 
         try{
             System.out.println( service.getOne(id) );
         }
         catch (ElementNotFoundException ex){
-            System.out.println("Le produit n'a pas été trouvé");
+            System.out.println("Le client n'a pas été trouvé");
         }
     }
     private void add(){
-        ProduitDTO.ProduitDTOBuilder builder = ProduitDTO.builder();
+        ClientDTO.ClientDTOBuilder builder = ClientDTO.builder();
 
-        System.out.print("marque du produit : ");
-        builder.marque( sc.nextLine() );
-        System.out.print("nom du produit : ");
-        builder.nom( sc.nextLine() );
-        System.out.print("prix du produit : ");
-        builder.prix( Double.parseDouble(sc.nextLine()) );
+        System.out.print("prenom du client : ");
+        builder.prenom(sc.nextLine());
+        System.out.print("nom du client : ");
+        builder.nom(sc.nextLine());
+        System.out.print("adresse du client : ");
+        builder.adresse(sc.nextLine());
+        System.out.print("email du client : ");
+        builder.email(sc.nextLine());
 
         service.insert(builder.build());
     }
     private void delete(){
-        System.out.print("id du produit : ");
+        System.out.print("id du client : ");
         int id = Integer.parseInt( sc.nextLine() );
 
         try{
             System.out.println("Tentative de suppression");
             System.out.println( service.delete(id) );
-            System.out.println("Le produit a bien été supprimé");
+            System.out.println("Le client a bien été supprimé");
         }
         catch (ElementNotFoundException ex){
-            System.out.println("Le produit n'a pas été trouvé");
+            System.out.println("Le client n'a pas été trouvé");
         }
     }
     private void update(){
-        ProduitDTO.ProduitDTOBuilder builder = ProduitDTO.builder();
+        ClientDTO.ClientDTOBuilder builder = ClientDTO.builder();
 
-        System.out.print("id du produit : ");
-        builder.id( Integer.parseInt(sc.nextLine()) );
-        System.out.print("marque du produit : ");
-        builder.marque( sc.nextLine() );
-        System.out.print("nom du produit : ");
-        builder.nom( sc.nextLine() );
-        System.out.print("prix du produit : ");
-        builder.prix( Double.parseDouble(sc.nextLine()) );
+        System.out.print("id du client : ");
+        builder.id(Integer.parseInt(sc.nextLine()));
+        System.out.print("prenom du client : ");
+        builder.prenom(sc.nextLine());
+        System.out.print("nom du client : ");
+        builder.nom(sc.nextLine());
+        System.out.print("adresse du client : ");
+        builder.adresse(sc.nextLine());
+        System.out.print("email du client : ");
+        builder.email(sc.nextLine());
 
         try{
             System.out.println("Tentative d'update");
@@ -121,5 +128,4 @@ public class MenuProduit implements Menu {
     private void quit(){
         System.out.println("Au revoir!");
     }
-
 }

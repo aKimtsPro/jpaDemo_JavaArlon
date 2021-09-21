@@ -3,7 +3,11 @@ package exo.business.mapper;
 import exo.data.entity.Produit;
 import exo.dto.ProduitDTO;
 
-public class ProduitMapper {
+import java.util.stream.Collectors;
+
+public class ProduitMapper implements Mapper<Produit, ProduitDTO> {
+
+    private final CategorieMapper cmapper = new CategorieMapper();
 
     public ProduitDTO entityToDto(Produit entity){
         if(entity == null)
@@ -14,10 +18,15 @@ public class ProduitMapper {
                 .marque(entity.getMarque())
                 .nom(entity.getNom())
                 .prix(entity.getPrix())
+                .categories(
+                    entity.getCategories().stream()
+                        .map(cmapper::entityToDto)
+                        .collect(Collectors.toList())
+                )
                 .build();
     }
 
-    public Produit dtoToEntiy(ProduitDTO dto){
+    public Produit dtoToEntity(ProduitDTO dto){
         if( dto == null )
             return null;
 
@@ -26,6 +35,11 @@ public class ProduitMapper {
                 .marque(dto.getMarque())
                 .nom(dto.getNom())
                 .prix(dto.getPrix())
+                .categories(
+                        dto.getCategories().stream()
+                                .map(cmapper::dtoToEntity)
+                                .collect(Collectors.toList())
+                )
                 .build();
     }
 

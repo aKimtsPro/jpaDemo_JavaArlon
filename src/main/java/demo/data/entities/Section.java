@@ -4,7 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Entity
+//@Entity
 @Table(name = "section") // pas nécessaire car l'entité
 @Getter @Setter
 @NoArgsConstructor

@@ -1,11 +1,10 @@
 package exo.data.dao;
 
 import exo.data.entity.Produit;
-import exo.exception.ProduitNotFoundException;
+import exo.exception.ElementNotFoundException;
 import util.EntityManagerProvider;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Optional;
@@ -37,7 +36,7 @@ public class ProduitDAO implements CrudDAO<Produit, Integer> {
     public void update(Produit produit) {
 
         Produit toUpdate = getOne(produit.getId())
-                .orElseThrow(() -> new ProduitNotFoundException(produit.getId()));
+                .orElseThrow(() -> new ElementNotFoundException(Produit.class, produit.getId()));
 
         manager.getTransaction().begin();
 
